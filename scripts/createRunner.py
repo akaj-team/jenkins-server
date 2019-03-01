@@ -33,14 +33,14 @@ for i in range(1,int(count)+1):
   file.close()
 
 suite = ET.Element("suite",name="Suite")
+ET.SubElement(suite,"parameter",name="server",value="http://localhost:4444/wd/hub")
+ET.SubElement(suite,"parameter",name="browserName",value=browser)
 parameter={
 	'name':browser.capitalize()+' Test',
 	'parallel':'methods',
 	'thread-count':count
 }
 test = ET.SubElement(suite, "test",**parameter)
-ET.SubElement(test,"parameter",name="server",value="http://localhost:4444/wd/hub")
-ET.SubElement(test,"parameter",name="browserName",value=browser)
 classes = ET.SubElement(test, "classes")
 for i in range(1,int(count)+1):
     ET.SubElement(classes, "class", name='generate.'+testRunnerFileName+str(i))
