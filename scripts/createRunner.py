@@ -33,7 +33,7 @@ for i in range(1,int(count)+1):
   file.close()
 
 suite = ET.Element("suite",name="Suite")
-ET.SubElement(suite,"parameter",name="server",value="http://172.16.110.169:4444/wd/hub")
+ET.SubElement(suite,"parameter",name="server",value="http://hub:4444/wd/hub")
 ET.SubElement(suite,"parameter",name="browserName",value=browser)
 parameter={
 	'name':browser.capitalize()+' Test',
