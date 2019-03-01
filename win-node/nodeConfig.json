@@ -1,0 +1,24 @@
+{
+  "capabilities": [
+    {
+      "browserName": "MicrosoftEdge",
+      "maxInstances": 5,
+	  "version": "40"
+    },
+	{
+      "browserName": "internet explorer",
+      "maxInstances": 5,
+	  "version": "11"
+    },
+	{
+      "browserName": "operablink",
+      "maxInstances": 5,
+	  "version": "58"
+    }
+  ],
+  "hub": "http://172.16.110.169:4444",
+  "port": 5558,
+  "webdriver.edge.driver": "MicrosoftWebDriver.exe",
+  "webdriver.ie.driver": "IEDriverServer.exe",
+  "webdriver.opera.driver": "operadriver.exe"
+}
