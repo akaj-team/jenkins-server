@@ -47,7 +47,7 @@ for i in range(1,int(count)+1):
 tree = ET.ElementTree(suite)
 tree.write(open('src/test/resources/GridParallelSuite.xml',"wb"))	
 
-os.system("mvn clean test")
+os.system("mvn clean test -Dsuite=GridParallelSuite")
 if not os.path.isdir("jsontarget"):
    os.makedirs("jsontarget")
 source = os.listdir("target/cucumber-reports")
