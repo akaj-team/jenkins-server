@@ -26,6 +26,8 @@ for i in range(1,int(count)+1):
          print('package generate;')
         if 'ParallelTestRunner' in line:
          print(line.replace("ParallelTestRunner",testRunnerFileName+str(i)),end='')
+        elif 'junit-report' in line:
+         print(line.replace('junit-report','junit-report'+str(i)),end='')
         elif 'CucumberTestReport' in line:
          print(line.replace('CucumberTestReport',browser.capitalize()+'CucumberTestReport'+str(i)),end='')
         else:
