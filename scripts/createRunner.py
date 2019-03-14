@@ -3,20 +3,20 @@ import xml.etree.cElementTree as ET
 from shutil import copyfile
 import string
 import fileinput
-import os  
+import os
 import glob
 import shutil
 
 browser = sys.argv[1]
 count = sys.argv[2]
 testRunnerFileName="Parallel"+browser.capitalize()+"TestRunnerGenerate"
-testRunnerGeneratePath="src/test/java/generate/"
+testRunnerGeneratePath="App/src/test/java/generate/"
 print ('Create: ', count+' '+browser+' threads')
-templateFilePath = 'src/test/java/ParallelTestRunner.java'
-if os.path.isdir("src/test/java/generate"):
-  shutil.rmtree('src/test/java/generate')
+templateFilePath = 'App/src/test/java/ParallelTestRunner.java'
+if os.path.isdir("App/src/test/java/generate"):
+  shutil.rmtree('App/src/test/java/generate')
 
-os.makedirs("src/test/java/generate/")
+os.makedirs("App/src/test/java/generate/")
 for i in range(1,int(count)+1):
   testRunnerFilePath = testRunnerGeneratePath + testRunnerFileName+str(i)+".java"
   copyfile(templateFilePath, testRunnerFilePath)
@@ -47,13 +47,13 @@ classes = ET.SubElement(test, "classes")
 for i in range(1,int(count)+1):
     ET.SubElement(classes, "class", name='generate.'+testRunnerFileName+str(i))
 tree = ET.ElementTree(suite)
-tree.write(open('src/test/resources/GridParallelSuite.xml',"wb"))	
+tree.write(open('App/src/test/resources/GridParallelSuite.xml',"wb"))
 
 os.system("mvn clean test -Dsuite=GridParallelSuite")
 if not os.path.isdir("jsontarget"):
    os.makedirs("jsontarget")
-source = os.listdir("target/cucumber-reports")
+source = os.listdir("App/target/cucumber-reports")
 destination = "jsontarget/"
 for files in source:
     if files.endswith(".json"):
-        shutil.copy("target/cucumber-reports/"+files,destination)
+        shutil.copy("App/target/cucumber-reports/"+files,destination)
