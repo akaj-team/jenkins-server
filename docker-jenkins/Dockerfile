@@ -13,5 +13,5 @@ ENV PATH="/root/scripts:${PATH}"
 #ENV TZ=Asia/Ho_Chi_Minh
 
 COPY plugins.txt /plugins.txt
-RUN /usr/local/bin/plugins.sh /plugins.txt
+RUN /usr/local/bin/install-plugins.sh < /plugins.txt
 
